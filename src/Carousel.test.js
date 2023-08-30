@@ -57,3 +57,25 @@ it("works when you click on the left arrow", function() {
   expect(queryByAltText("Photo by Pratik Patel on Unsplash")).not.toBeInTheDocument();
 
 });
+
+// EXHAUST ARRAY
+
+test("navigation arrow disappears when image array exhausted - EITHER END,", () => {
+
+  const { queryByTestId } = render(<Carousel />);
+  const rightArrow = queryByTestId("right-arrow");
+
+  expect(queryByTestId("left-arrow")).not.toBeInTheDocument()
+  expect(queryByTestId("right-arrow")).toBeInTheDocument()
+
+  fireEvent.click(rightArrow);
+
+  expect(queryByTestId("left-arrow")).toBeInTheDocument()
+  expect(queryByTestId("right-arrow")).toBeInTheDocument()
+
+  fireEvent.click(rightArrow);
+
+  expect(queryByTestId("left-arrow")).toBeInTheDocument()
+  expect(queryByTestId("right-arrow")).not.toBeInTheDocument()
+
+})
