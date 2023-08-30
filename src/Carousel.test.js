@@ -65,17 +65,17 @@ test("navigation arrow disappears when image array exhausted - EITHER END,", () 
   const { queryByTestId } = render(<Carousel />);
   const rightArrow = queryByTestId("right-arrow");
 
-  expect(queryByTestId("left-arrow")).not.toBeInTheDocument()
-  expect(queryByTestId("right-arrow")).toBeInTheDocument()
+  expect(queryByTestId("left-arrow").style.visibility).toEqual("hidden")
+  expect(queryByTestId("right-arrow").style.visibility).toEqual("visible")
 
   fireEvent.click(rightArrow);
 
-  expect(queryByTestId("left-arrow")).toBeInTheDocument()
-  expect(queryByTestId("right-arrow")).toBeInTheDocument()
+  expect(queryByTestId("left-arrow").style.visibility).toEqual("visible")
+  expect(queryByTestId("right-arrow").style.visibility).toEqual("visible")
 
   fireEvent.click(rightArrow);
 
-  expect(queryByTestId("left-arrow")).toBeInTheDocument()
-  expect(queryByTestId("right-arrow")).not.toBeInTheDocument()
+  expect(queryByTestId("left-arrow").style.visibility).toEqual("visible")
+  expect(queryByTestId("right-arrow").style.visibility).toEqual("hidden")
 
 })

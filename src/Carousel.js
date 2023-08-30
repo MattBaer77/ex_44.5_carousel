@@ -35,7 +35,7 @@ function Carousel(props) {
           className="fas fa-chevron-circle-right fa-2x"
           onClick={goForward}
           data-testid="right-arrow"
-          style={cardIdx >= total ? {visibility:"hidden"} : {visibility:"visible"}}
+          style={cardIdx >= (total - 1) ? {visibility:"hidden"} : {visibility:"visible"}}
         />
 
       </div>
